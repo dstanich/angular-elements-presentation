@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  display: flex;
+  flex: 0 0 75%;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+
+  &::placeholder {
+    color: lightgray;
+  }
+}
