@@ -6,13 +6,13 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./add-grocery.component.scss']
 })
 export class AddGroceryComponent {
-  @Output() addGrocery: EventEmitter<string> = new EventEmitter();
+  @Output() groceryAdded: EventEmitter<string> = new EventEmitter();
   item: string;
 
   constructor() {}
 
   addItem(name: string) {
-    this.addGrocery.emit(name);
+    this.groceryAdded.emit(name);
     this.item = '';
   }
 }
