@@ -1,11 +1,26 @@
-app-add-grocery {
-  margin-top: 2rem;
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #cfa8d2;
+  overflow: hidden;
 }
 
-app-grocery-list {
-  margin-top: 2rem;
+app-title {
+  display: flex;
+  flex: 0 0 auto;
 }
 
-app-button {
-  margin-top: 2rem;
+.scrollable-area {
+  display: block;
+  flex: 1 1 auto;
+  overflow: auto;
+
+  app-add-grocery {
+    margin-top: 2rem;
+  }
+
+  app-grocery-list {
+    margin-top: 2rem;
+  }
 }
