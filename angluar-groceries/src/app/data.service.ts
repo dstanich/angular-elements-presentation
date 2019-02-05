@@ -19,15 +19,20 @@ export class DataService {
     });
   }
 
-  removeItem(name: string) {
-    const foundItem = this._items.filter((item: Item) => item.name === name);
-    if (foundItem.length > 0) {
-      foundItem[0].removed = true;
+  toggleItemStatus(name: string) {
+    const foundItem = this.findItemByName(name);
+    if (foundItem) {
+      foundItem.removed = !foundItem.removed;
     }
   }
 
   clearItems() {
     this._items = [];
+  }
+
+  private findItemByName(name: string): Item {
+    const search = this._items.filter((item: Item) => item.name === name);
+    return search.length > 0 ? search[0] : undefined;
   }
 }
 
