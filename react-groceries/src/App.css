@@ -5,3 +5,13 @@
   background: #cfa8d2;
   overflow: hidden;
 }
+
+.scrollable-area {
+  display: block;
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.add-grocery {
+  margin-top: 2rem;
+}

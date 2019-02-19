@@ -1,0 +1,16 @@
+.AddGrocery {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  display: flex;
+  flex: 0 0 75%;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  border: 1px solid #420846;
+}
+
+input::placeholder {
+  color: lightgray;
+}
