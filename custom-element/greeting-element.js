@@ -25,7 +25,7 @@ class GreetUser extends HTMLElement {
     style.textContent = `
       .root { 
         border: 1px solid #323232;
-        padding: 5px 10px;
+        padding: 10px 15px;
         background: #e2e2e2; 
         color: black;
         width: 400px;
