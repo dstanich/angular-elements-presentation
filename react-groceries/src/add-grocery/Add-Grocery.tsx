@@ -26,6 +26,7 @@ export class AddGrocery extends Component<Props, {}> {
   addItem = (event: any) => {
     if (event.key === 'Enter') {
       this.props.addItem(event.target.value);
+      event.target.value = '';
     }
   };
 }
