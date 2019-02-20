@@ -5,7 +5,7 @@ interface Props {
   addItem: Function;
 }
 
-class AddGrocery extends Component<Props, {}> {
+export class AddGrocery extends Component<Props, {}> {
   constructor(props: any) {
     super(props);
   }
@@ -29,5 +29,3 @@ class AddGrocery extends Component<Props, {}> {
     }
   };
 }
-
-export { AddGrocery };

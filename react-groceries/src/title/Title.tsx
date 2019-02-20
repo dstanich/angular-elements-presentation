@@ -6,7 +6,7 @@ interface Props {
   text: string;
 }
 
-class Title extends Component<Props, {}> {
+export class Title extends Component<Props, {}> {
   constructor(props: any) {
     super(props);
   }
@@ -27,5 +27,3 @@ class Title extends Component<Props, {}> {
     );
   }
 }
-
-export { Title };
