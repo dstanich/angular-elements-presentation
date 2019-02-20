@@ -3,12 +3,11 @@
     <Title text="Vue Groceries"/>
     <div class="scrollable-area">
       <div class="add-grocery">
-        <Add-Grocery v-on:grocery-added="groceryAdded"/>
+        <Add-Grocery @grocery-added="groceryAdded"/>
       </div>
-      <!-- <app-grocery-list
-    [items]="groceryItems"
-    (itemClicked)="groceryItemClicked($event)"
-      ></app-grocery-list>-->
+      <div class="grocery-list">
+        <Grocery-List :items="groceryItems" @item-clicked="groceryItemClicked"/>
+      </div>
     </div>
   </div>
 </template>
@@ -17,19 +16,29 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Title from './components/Title.vue';
 import AddGrocery from './components/Add-Grocery.vue';
-import { DataService } from './data.service';
+import GroceryList from './components/Grocery-List.vue';
+
+import { DataService, Item } from './data.service';
 
 @Component({
   components: {
     Title,
-    AddGrocery
+    AddGrocery,
+    GroceryList
   }
 })
 export default class App extends Vue {
   private dataService = new DataService();
+  private get groceryItems(): Array<Item> {
+    return this.dataService.items;
+  }
 
   public groceryAdded(item: string) {
     this.dataService.addItem(item);
+  }
+
+  public groceryItemClicked(item: string) {
+    this.dataService.toggleItemStatus(item);
   }
 }
 </script>

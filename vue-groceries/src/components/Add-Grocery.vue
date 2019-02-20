@@ -5,7 +5,7 @@
       placeholder="Grocery"
       aria-label="Add a grocery item"
       v-model="item"
-      v-on:keydown.enter="$emit('grocery-added', item)"
+      @keydown.enter="addItem"
     >
   </div>
 </template>
@@ -16,6 +16,11 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class AddGrocery extends Vue {
   private item: string = '';
+
+  private addItem() {
+    this.$emit('grocery-added', this.item);
+    this.item = '';
+  }
 }
 </script>
 
