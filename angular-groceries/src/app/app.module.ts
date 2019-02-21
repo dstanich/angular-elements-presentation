@@ -18,4 +18,6 @@ import { GroceryListComponent } from './grocery-list/grocery-list.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {}
+}

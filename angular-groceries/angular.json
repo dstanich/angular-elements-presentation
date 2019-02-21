@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angluar-groceries": {
+    "angular-groceries": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angluar-groceries",
+            "outputPath": "dist/angular-groceries",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -57,18 +57,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angluar-groceries:build"
+            "browserTarget": "angular-groceries:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angluar-groceries:build:production"
+              "browserTarget": "angular-groceries:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angluar-groceries:build"
+            "browserTarget": "angular-groceries:build"
           }
         },
         "lint": {
@@ -81,5 +81,5 @@
       }
     }
   },
-  "defaultProject": "angluar-groceries"
+  "defaultProject": "angular-groceries"
 }
