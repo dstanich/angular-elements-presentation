@@ -1,0 +1,17 @@
+
+
+ng add @angular/elements => adds polyfills plus installs elements
+
+tsconfig.json set target to es2015 or you have to add more polyfills
+
+in module:
+* remove bootstrap
+* add elements to EntryComponents
+* add ngOnBootstrap() to override bootstrapping
+* in constructor, creatcustomelement
+
+package.json, create new script that runs the build and concats the files
+* output-hashing none will turn off hash naming
+* --prod to get small bundle
+
+custom elements can only take strings.  change grocery-list to accept items as a string

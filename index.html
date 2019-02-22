@@ -10,10 +10,12 @@
     <title>Create Reusable Custom Elements with Angular Elements</title>
 
     <link rel="stylesheet" href="css/reveal.css" />
-    <link rel="stylesheet" href="css/theme/black.css" />
+    <link rel="stylesheet" href="css/theme/league.css" />
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/zenburn.css" />
+
+    <link rel="stylesheet" href="custom.css" />
 
     <!-- Printing and PDF exports -->
     <script>
@@ -25,12 +27,175 @@
         : 'css/print/paper.css';
       document.getElementsByTagName('head')[0].appendChild(link);
     </script>
+
+    <script src="./examples/greeting-element.js"></script>
+    <script src="./examples/demo-elements.js"></script>
   </head>
   <body>
     <div class="reveal">
+      <!-- <div class="header">
+        Use left and right arrows to navigate
+      </div> -->
+      <!-- <div class="footer">
+        Use left and right arrows to navigate
+      </div> -->
+
       <div class="slides">
-        <section>Slide 1</section>
-        <section>Slide 2</section>
+        <section>
+          <h3>Create Reusable Custom Elements<br />with Angular Elements</h3>
+          <h4 style="margin-top: 2em">David Stanich</h4>
+        </section>
+
+        <!-- <section>
+          <h3>Background</h3>
+        </section> -->
+
+        <section>
+          <section>
+            <h2>What are custom elements?</h2>
+          </section>
+
+          <section>
+            <div>
+              Custom HTML tags that encapsulate functionality.
+              <br />Registered by a JavaScript API.
+            </div>
+            <pre style="margin-top: 2em"><code data-trim>
+              customElements.define('my-element', MyElement);
+            </code></pre>
+
+            <pre style="margin-top: 1em"><code data-trim>
+              <my-element some-attribute="a value"></my-element>
+            </code></pre>
+
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements"
+              target="_blank"
+              style="display: block; margin-top: 3em; font-size: .75em"
+              >MDN Docs</a
+            >
+          </section>
+
+          <section>
+            <h2>Web Components</h2>
+            <div>
+              Web Components are several standards combined which allow reusable
+              custom elements that are completely encapsulated.
+            </div>
+            <div style="margin-top: 2em">
+              Custom Elements are one of these standards.
+            </div>
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/Web_Components"
+              target="_blank"
+              style="display: block; margin-top: 3em; font-size: .75em"
+              >MDN Docs</a
+            >
+          </section>
+
+          <section>
+            <script>
+              function updateUser() {
+                // Updates the custom element with the new attribute
+                const user = document.getElementById('new-user').value;
+                document
+                  .getElementsByTagName('greet-user')[0]
+                  .setAttribute('user', user);
+              }
+            </script>
+            <h2>Example</h2>
+            <div style="background: #fff;">
+              <greet-user user="David"></greet-user>
+              <br /><br />
+              <input
+                id="new-user"
+                type="text"
+                placeholder="New user value..."
+                style="font-size: 1em"
+              />
+              <button onclick="updateUser()" style="font-size: 1em">
+                Update attribute
+              </button>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>
+              Angular Elements<br />
+              <code style="font-size: .75em">@angular/elements</code>
+            </h2>
+          </section>
+
+          <section>
+            <h2>What?</h2>
+            <ul>
+              <li>
+                Packages Angular components as custom elements
+              </li>
+              <li>
+                Registers components with <code>CustomElementRegistry</code>
+              </li>
+              <li>
+                Contains Angular runtime to bridge with DOM
+              </li>
+            </ul>
+            <a
+              href="https://angular.io/guide/elements"
+              target="_blank"
+              style="margin-top: 2em; display: block"
+              >Elements Documentation</a
+            >
+          </section>
+
+          <section>
+            <h2>Why?</h2>
+            <ul>
+              <li>Angular within React/Vue/Vanilla</li>
+              <li>Pieces of app may be Angular (ex: CMS)</li>
+              <li>Migration path for AngularJS</li>
+              <li>Inject Angular within JSP/Jade/etc</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Examples</h2>
+            <custom-title text="Hello World"></custom-title>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Considerations</h2>
+          </section>
+
+          <section>
+            <h2>Custom Element Considerations</h2>
+            <ul>
+              <li>Element name restrictions (dash, multiple word)</li>
+              <li>String attributes only</li>
+              <li>
+                Browser support (polyfills?)
+                <br /><img src="./caniuse-elements.png" />
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>@angular/elements Considerations</h2>
+            <div style="font-size: .75em; margin-top:-.5em">As of Feb-2019</div>
+            <ul>
+              <li>Built result isn't that small (our demo = 240KB)</li>
+              <li>
+                <code>angular-cli</code> doesn't yet have build path for it
+              </li>
+              <li>
+                Building each element indepenently will repeat framework code
+              </li>
+            </ul>
+          </section>
+        </section>
       </div>
     </div>
 
