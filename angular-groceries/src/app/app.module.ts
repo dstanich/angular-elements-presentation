@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { createCustomElement } from '@angular/elements';
 
 import { AppComponent } from './app.component';
 import { TitleComponent } from './title/title.component';
@@ -16,8 +17,24 @@ import { GroceryListComponent } from './grocery-list/grocery-list.component';
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  entryComponents: [TitleComponent, AddGroceryComponent, GroceryListComponent]
 })
 export class AppModule {
-  constructor() {}
+  constructor(private injector: Injector) {
+    // Define all our custom elements
+    let el = createCustomElement(TitleComponent, { injector: this.injector });
+    customElements.define('custom-title', el);
+
+    el = createCustomElement(AddGroceryComponent, {
+      injector: this.injector
+    });
+    customElements.define('custom-add-grocery', el);
+
+    el = createCustomElement(AddGroceryComponent, {
+      injector: this.injector
+    });
+    customElements.define('custom-grocery-list', AppModule);
+  }
+
+  ngDoBootstrap() {}
 }
