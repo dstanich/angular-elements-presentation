@@ -30,10 +30,10 @@ export class AppModule {
     });
     customElements.define('custom-add-grocery', el);
 
-    el = createCustomElement(AddGroceryComponent, {
+    el = createCustomElement(GroceryListComponent, {
       injector: this.injector
     });
-    customElements.define('custom-grocery-list', AppModule);
+    customElements.define('custom-grocery-list', el);
   }
 
   ngDoBootstrap() {}

@@ -8,7 +8,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:elements": "ng build --prod --output-hashing none && cd dist/angular-groceries && cat runtime* polyfills* main* scripts* > elements.js"
+    "build:elements": "ng build --prod --output-hashing none && npm run concat-build-files && npm run copy-to-dirs",
+    "concat-build-files": "cd dist/angular-groceries && cat runtime* polyfills* main* scripts* > elements.js",
+    "copy-to-dirs": "npm run copy-to-react && npm run copy-to-vue",
+    "copy-to-react": "cp dist/angular-groceries/elements.js ../react-groceries/public/",
+    "copy-to-vue": "cp dist/angular-groceries/elements.js ../vue-groceries/public/"
   },
   "private": true,
   "dependencies": {
