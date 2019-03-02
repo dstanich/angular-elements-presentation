@@ -33,7 +33,7 @@ export default class GroceryList extends Vue {
 }
 
 h1 {
-  color: #420846;
+  color: #002109;
 }
 
 .main-container {
