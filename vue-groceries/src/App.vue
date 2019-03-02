@@ -58,7 +58,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: #cfa8d2;
+  background: #b0dfbc;
   overflow: hidden;
 }
 

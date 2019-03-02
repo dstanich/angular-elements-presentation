@@ -26,17 +26,17 @@ export default class Title extends Vue {
   display: flex;
   align-content: space-between;
   align-items: center;
-  background: #6a266f;
+  background: #07531b;
   padding: 5px 15px;
   box-shadow: 0 2px 5px 0px #000000;
-  color: #cfa8d2;
+  color: #b0dfbc;
   margin-bottom: 5px;
 }
 
 .text {
   display: flex;
   flex: 1 1 auto;
-  color: #cfa8d2;
+  color: #b0dfbc;
   font-size: 1.25rem;
 }
 
