@@ -10,7 +10,7 @@
     <title>Create Reusable Custom Elements with Angular Elements</title>
 
     <link rel="stylesheet" href="css/reveal.css" />
-    <link rel="stylesheet" href="css/theme/league.css" />
+    <link rel="stylesheet" href="css/theme/white.css" />
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/zenburn.css" />
@@ -34,7 +34,7 @@
   <body>
     <div class="reveal">
       <!-- <div class="header">
-        Use left and right arrows to navigate
+        dd
       </div> -->
       <!-- <div class="footer">
         Use left and right arrows to navigate
@@ -44,15 +44,47 @@
         <section>
           <h3>Create Reusable Custom Elements<br />with Angular Elements</h3>
           <h4 style="margin-top: 2em">David Stanich</h4>
+
+          <a
+            href="https://dstanich.github.io/angular-elements-presentation/"
+            target="presentation"
+            style="font-size: .75em; margin-top:2em"
+            >https://dstanich.github.io/angular-elements-presentation/</a
+          >
         </section>
 
-        <!-- <section>
+        <section>
           <h3>Background</h3>
-        </section> -->
+          <div style="display: flex;">
+            <div style="flex: 1 1 75%">
+              <ul>
+                <li>Advisory Software Engineer</li>
+                <li>IBM Watson Health</li>
+                <li>Frontend development</li>
+                <li>Co-organizer Rochester FED@IBM meetup</li>
+              </ul>
+              <div style="margin-top: 2em; text-align: center">
+                <span style="margin-right: 1.5em">
+                  Twitter:
+                  <a href="https://twitter.com/dstanich" target="twitter"
+                    >@dstanich</a
+                  >
+                </span>
+                <span>
+                  GitHub:
+                  <a href="https://github.com/dstanich" target="gh">dstanich</a>
+                </span>
+              </div>
+            </div>
+            <div style="flex: 1 1 25%">
+              <img src="images/packers_hat.jpg" />
+            </div>
+          </div>
+        </section>
 
         <section>
           <section>
-            <h2>What are custom elements?</h2>
+            <h3>What are custom elements?</h3>
           </section>
 
           <section>
@@ -77,7 +109,7 @@
           </section>
 
           <section>
-            <h2>Web Components</h2>
+            <h3>Web Components</h3>
             <div>
               Web Components are several standards combined which allow reusable
               custom elements that are completely encapsulated.
@@ -103,7 +135,7 @@
                   .setAttribute('user', user);
               }
             </script>
-            <h2>Example</h2>
+            <h3>Example</h3>
             <div style="background: #fff;">
               <greet-user user="David"></greet-user>
               <br /><br />
@@ -122,14 +154,14 @@
 
         <section>
           <section>
-            <h2>
+            <h3>
               Angular Elements<br />
               <code style="font-size: .75em">@angular/elements</code>
-            </h2>
+            </h3>
           </section>
 
           <section>
-            <h2>What?</h2>
+            <h3>What?</h3>
             <ul>
               <li>
                 Packages Angular components as custom elements
@@ -150,18 +182,183 @@
           </section>
 
           <section>
-            <h2>Why?</h2>
+            <h3>Why?</h3>
             <ul>
               <li>Angular within React/Vue/Vanilla</li>
               <li>Pieces of app may be Angular (ex: CMS)</li>
               <li>Migration path for AngularJS</li>
               <li>Inject Angular within JSP/Jade/etc</li>
+              <li>Easier dynamic components within Angular</li>
             </ul>
           </section>
 
           <section>
-            <h2>Examples</h2>
+            <h3>Example:</h3>
             <custom-title text="Hello World"></custom-title>
+          </section>
+        </section>
+
+        <section>
+          <section><h2>Setting Up</h2></section>
+
+          <section>
+            <h3>Summary</h3>
+            <ol>
+              <li>Install dependencies</li>
+              <li>Update config if no polyfill</li>
+              <li>Configure module</li>
+              <li>Define elements</li>
+              <li>Setup build</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Install Dependencies</h3>
+            <div>NPM install or ng add</div>
+            <pre><code data-trim>
+                // No polyfill; limited browser support
+                npm install @angular/elements --save-dev
+
+                // Polyfill included
+                ng add @angular/elements
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Update Config If No Polyfill</h3>
+            <div>If no polyfill, force output to es2015</div>
+            <pre><code data-trim>
+                {
+                  // ...
+                  "compilerOptions": {
+                    // ...
+                    "target": "es2015"
+                  }
+                }
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Configure Module</h3>
+            <ul>
+              <li>Remove <code>bootstrap</code> property</li>
+              <li>Add empty <code>ngDoBootstrap()</code> method</li>
+              <li>Add <code>entryComponents</code> property</li>
+              <li>Import <code>createCustomElement</code> from elements</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Define Elements</h3>
+            <pre><code data-trim>
+                constructor(private injector: Injector) {
+                  const el = createCustomElement(TitleComponent, 
+                      { injector: this.injector }
+                  );
+                  customElements.define('custom-title', el);
+
+                  // ...
+                }
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Setup Build</h3>
+            <div><code>angular-cli</code> does not have build for elements</div>
+            <pre style="margin-top: 2em"><code data-trim>
+                // Prod build, disable hashing in output
+                ng build --prod --output-hashing none
+
+                // Concat the scripts into single .js file
+                cat runtime* polyfills* main* scripts* > elements.js
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Example</h3>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Using the Custom Elements</h2>
+          </section>
+
+          <section>
+            <h2>Overview</h2>
+            <ul>
+              <li>Import .js file into HTML</li>
+              <li>Use custom element like normal tag</li>
+              <li>Inputs are attributes</li>
+              <li>Outputs are custom events</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>HTML Import</h2>
+            <pre><code data-trim>
+                &lt;!DOCTYPE html&gt;
+                &lt;html lang="en"&gt;
+                  &lt;head&gt;
+                    &lt;!-- ... --&gt;
+                    &lt;script src="./elements.js"&gt;&lt;/script&gt;
+                  &lt;/head&gt;
+                  &lt;body&gt;
+                    &lt;!-- ... --&gt;
+                    &lt;my-custom-element&gt;&lt;/my-custom-element&gt;
+                    &lt;!-- ... --&gt;
+                  &lt;/body&gt;
+                &lt;/html&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>Input / Output</h2>
+            <pre><code data-trim>
+                <!-- Inputs as attributes -->
+                <my-custom-element 
+                    inputId="some-value">
+                </my-custom-element>
+            </code></pre>
+
+            <pre><code data-trim>
+                // Outputs as custom events
+                element = document.getElementById('id');
+                if (element) {
+                  element.addEventListener('outputName', (item: any) =>
+                    // some logic
+                  );
+                }
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Within Vue / React</h3>
+            <pre><code data-trim>
+              <!-- VUE: App.vue -->
+              <template>
+                <div id="app">
+                  <my-custom-element></my-custom-element>
+                </div>
+              </template>
+            </code></pre>
+
+            <pre><code data-trim>
+              // REACT: App.tsx
+              class App extends Componet {
+                render() {
+                  return (
+                    <div className="App">
+                      <my-custom-element></my-custom-element>
+                    </div>
+                  );
+                }
+              }
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>Examples</h2>
           </section>
         </section>
 
@@ -171,20 +368,26 @@
           </section>
 
           <section>
-            <h2>Custom Element Considerations</h2>
+            <h3>Custom Element Considerations</h3>
             <ul>
-              <li>Element name restrictions (dash, multiple word)</li>
+              <li>Element name restrictions</li>
               <li>String attributes only</li>
               <li>
                 Browser support (polyfills?)
-                <br /><img src="./caniuse-elements.png" />
+                <br /><a
+                  href="https://caniuse.com/#feat=custom-elementsv1"
+                  target="caniuse"
+                  ><img src="./caniuse-elements.png"
+                /></a>
               </li>
             </ul>
           </section>
 
           <section>
-            <h2>@angular/elements Considerations</h2>
-            <div style="font-size: .75em; margin-top:-.5em">As of Feb-2019</div>
+            <h3>@angular/elements Considerations</h3>
+            <div style="font-size: .75em; margin-top:-.5em">
+              As of March-2019
+            </div>
             <ul>
               <li>Built result isn't that small (our demo = 240KB)</li>
               <li>
@@ -195,6 +398,18 @@
               </li>
             </ul>
           </section>
+
+          <section>
+            TODO: Limitations within frameworks
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Exporting from React/Vue</h2>
+          </section>
+
+          <section>TODO</section>
         </section>
       </div>
     </div>
