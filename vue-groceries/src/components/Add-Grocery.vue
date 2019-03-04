@@ -36,9 +36,10 @@ input {
   font-size: 1.5rem;
   padding: 10px 15px;
   border: 1px solid #420846;
+  color: #07531b;
 
   &::placeholder {
-    color: lightgray;
+    color: #07531b;
   }
 }
 </style>
