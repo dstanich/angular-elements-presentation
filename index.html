@@ -77,7 +77,7 @@
               </div>
             </div>
             <div style="flex: 1 1 25%">
-              <img src="images/packers_hat.jpg" />
+              <img src="images/profile.jpg" />
             </div>
           </div>
         </section>
@@ -88,10 +88,13 @@
           </section>
 
           <section>
-            <div>
-              Custom HTML tags that encapsulate functionality.
-              <br />Registered by a JavaScript API.
-            </div>
+            <h3>Custom Elements</h3>
+            <ul>
+              <li>Custom HTML tags that encapsulate functionality</li>
+              <li>Registered by a JavaScript API</li>
+              <li>Lifecycle methods</li>
+              <li>Can extend existing tag</li>
+            </ul>
             <pre style="margin-top: 2em"><code data-trim>
               customElements.define('my-element', MyElement);
             </code></pre>
@@ -108,19 +111,42 @@
             >
           </section>
 
+          <section
+            data-background="./caniuse-elements.png"
+            data-background-size="contain"
+          >
+            <h3 style="margin-bottom: 90%;">
+              Browser Support
+              <a
+                href="https://caniuse.com/#feat=custom-elementsv1"
+                target="caniuse"
+                >(Details)</a
+              >
+            </h3>
+          </section>
+
           <section>
             <h3>Web Components</h3>
             <div>
               Web Components are several standards combined which allow reusable
               custom elements that are completely encapsulated.
             </div>
-            <div style="margin-top: 2em">
-              Custom Elements are one of these standards.
+          </section>
+
+          <section>
+            <h3>Custom Elements / Web Components</h3>
+            <div style="margin-bottom: 1em;">
+              Custom Elements are part of Web Component standard
             </div>
+            <ul>
+              <li>Custom elements</li>
+              <li>Shadow DOM</li>
+              <li>HTML templates</li>
+            </ul>
             <a
               href="https://developer.mozilla.org/en-US/docs/Web/Web_Components"
               target="_blank"
-              style="display: block; margin-top: 3em; font-size: .75em"
+              style="display: block; margin-top: 2em; font-size: .75em"
               >MDN Docs</a
             >
           </section>
@@ -135,7 +161,7 @@
                   .setAttribute('user', user);
               }
             </script>
-            <h3>Example</h3>
+            <h3>Embedded Example</h3>
             <div style="background: #fff;">
               <greet-user user="David"></greet-user>
               <br /><br />
@@ -193,7 +219,7 @@
           </section>
 
           <section>
-            <h3>Example:</h3>
+            <h3>Embedded Example</h3>
             <custom-title text="Hello World"></custom-title>
           </section>
         </section>
@@ -333,7 +359,7 @@
           </section>
 
           <section>
-            <h3>Within Vue / React</h3>
+            <h3>Within Vue</h3>
             <pre><code data-trim>
               <!-- VUE: App.vue -->
               <template>
@@ -342,7 +368,10 @@
                 </div>
               </template>
             </code></pre>
+          </section>
 
+          <section>
+            <h3>Within React</h3>
             <pre><code data-trim>
               // REACT: App.tsx
               class App extends Componet {
@@ -389,7 +418,7 @@
               As of March-2019
             </div>
             <ul>
-              <li>Built result isn't that small (our demo = 240KB)</li>
+              <li>Built result isn't that small (our demo ~ 240KB)</li>
               <li>
                 <code>angular-cli</code> doesn't yet have build path for it
               </li>
@@ -400,7 +429,24 @@
           </section>
 
           <section>
-            TODO: Limitations within frameworks
+            <h3>Frameworks & Custom Elements</h3>
+            <ul style="display: block">
+              <li>Frameworks may have issues w/custom elements</li>
+              <li>
+                <a
+                  href="https://custom-elements-everywhere.com/"
+                  target="ce-everywhere"
+                  >Custom Elements Everywhere</a
+                >
+                websites
+              </li>
+              <ul>
+                <li>Set of custom element tests</li>
+              </ul>
+              <li style="list-style: none; margin-left: 1em">Angular: 100%</li>
+              <li style="list-style: none; margin-left: 1em">Vue: 100%</li>
+              <li style="list-style: none; margin-left: 1em">React: 71%</li>
+            </ul>
           </section>
         </section>
 
@@ -409,7 +455,58 @@
             <h2>Exporting from React/Vue</h2>
           </section>
 
-          <section>TODO</section>
+          <section>
+            React and Vue have similar features to
+            <code>@angular/elements</code> to export components as custom
+            elements.  Both official and unofficial packages.
+          </section>
+
+          <section>
+            <h3>Vue</h3>
+            <ul>
+              <li>
+                <a
+                  href="https://github.com/vuejs/vue-web-component-wrapper"
+                  target="vue"
+                  >vuejs/vue-web-component-wrapper</a
+                >
+              </li>
+              <ul>
+                <li>Official package</li>
+                <li>CLI support</li>
+              </ul>
+            </ul>
+          </section>
+
+          <section>
+            <h3>React</h3>
+            <ul>
+              <li>
+                <a href="reahttps://github.com/spring-media/react-web-component" target="react">spring-media/react-web-component</a>
+              </li>
+              <ul>
+                <li>Community package</li>
+                <li>No CLI support</li>
+                <li>Limited downloads</li>
+              </ul>
+            </ul> 
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Future</h2>
+            <ul>
+              <li>Better browser support for custom element</li>
+              <li>Smaller bundles</li>
+              <li><code>angular-cli</code> support (hopefully)</li>
+              <li>Potential for more generic web!</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h2>Questions / Discussion</h2>
         </section>
       </div>
     </div>
