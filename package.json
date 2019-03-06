@@ -1,0 +1,11 @@
+{
+  "name": "angular-elements-presentation",
+  "version": "1.0.0",
+  "scripts": {
+    "setup": "cd angular-groceries && npm install && cd ../react-groceries && npm install && cd ../vue-groceries && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dstanich/angular-elements-presentation.git"
+  }
+}
