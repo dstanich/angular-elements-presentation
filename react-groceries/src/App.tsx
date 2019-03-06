@@ -18,19 +18,42 @@ class App extends Component<{}, State> {
     this.state = { items: this.dataService.items };
   }
 
+  componentDidMount() {
+    let element = document.getElementById('addGrocery');
+    if (element) {
+      element.addEventListener('groceryAdded', (item: any) =>
+        this.groceryAdded(item.detail)
+      );
+    }
+
+    element = document.getElementById('groceryList');
+    if (element) {
+      element.addEventListener('itemClicked', (item: any) =>
+        this.groceryItemClicked(item.detail)
+      );
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <Title text="React Groceries" />
+        {/* <Title text="React Groceries" /> */}
+        <custom-title text="React Groceries - Custom Elements" />
         <div className="scrollable-area">
           <div className="add-grocery">
-            <AddGrocery addItem={this.groceryAdded} />
+            <custom-add-grocery id="addGrocery" />
+            {/* <AddGrocery addItem={this.groceryAdded} /> */}
           </div>
+
           <div className="grocery-list">
-            <GroceryList
+            <custom-grocery-list
+              id="groceryList"
+              items={JSON.stringify(this.state.items)}
+            />
+            {/* <GroceryList 
               items={this.state.items}
               itemClicked={this.groceryItemClicked}
-            />
+            /> */}
           </div>
         </div>
       </div>
