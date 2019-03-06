@@ -1,12 +1,15 @@
 <template>
   <div id="app">
-    <Title text="Vue Groceries"/>
+    <!-- <Title text="Vue Groceries"/> -->
+    <custom-title text="Vue Groceries - Custom Elements"></custom-title>
     <div class="scrollable-area">
       <div class="add-grocery">
-        <Add-Grocery @grocery-added="groceryAdded"/>
+        <!-- <Add-Grocery @grocery-added="groceryAdded"/> -->
+        <custom-add-grocery id="addGroceryElem"></custom-add-grocery>
       </div>
       <div class="grocery-list">
-        <Grocery-List :items="groceryItems" @item-clicked="groceryItemClicked"/>
+        <!-- <Grocery-List :items="groceryItems" @item-clicked="groceryItemClicked"/> -->
+        <custom-grocery-list id="groceryList" :items="stringifiedItems"></custom-grocery-list>
       </div>
     </div>
   </div>
@@ -28,9 +31,30 @@ import { DataService, Item } from './data.service';
   }
 })
 export default class App extends Vue {
-  private dataService = new DataService();
-  private get groceryItems(): Array<Item> {
+  public get groceryItems(): Array<Item> {
     return this.dataService.items;
+  }
+
+  public get stringifiedItems(): string {
+    return JSON.stringify(this.groceryItems);
+  }
+
+  private dataService = new DataService();
+
+  public mounted() {
+    let element = document.getElementById('addGroceryElem');
+    if (element) {
+      element.addEventListener('groceryAdded', (event: any) =>
+        this.groceryAdded(event.detail)
+      );
+    }
+
+    element = document.getElementById('groceryList');
+    if (element) {
+      element.addEventListener('itemClicked', (event: any) =>
+        this.groceryItemClicked(event.detail)
+      );
+    }
   }
 
   public groceryAdded(item: string) {
