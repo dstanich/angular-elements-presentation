@@ -19,6 +19,12 @@ class App extends Component<{}, State> {
   }
 
   componentDidMount() {
+    // Inject the Angular Elements output
+    // Putting this in index.html is causing "Operation Not Supported" error periodically
+    const script = document.createElement('script');
+    script.setAttribute('src', './elements.js');
+    document.body.appendChild(script);
+
     let element = document.getElementById('addGrocery');
     if (element) {
       element.addEventListener('groceryAdded', (item: any) =>
