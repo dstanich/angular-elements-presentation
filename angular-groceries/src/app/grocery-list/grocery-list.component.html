@@ -1,7 +1,7 @@
-<div *ngIf="items?.length > 0" class="main-container">
+<div *ngIf="itemObjects?.length > 0" class="main-container">
   <h1>Groceries</h1>
   <button
-    *ngFor="let item of items; let i = index"
+    *ngFor="let item of itemObjects; let i = index"
     class="grocery-item"
     [class.grocery-item--removed]="item.removed"
     (click)="handleItemClicked(item)"
