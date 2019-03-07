@@ -2,7 +2,7 @@
 
 Presentation given to...
 
-- 2019-03-06 [AngularMN March 2019 Meetup](https://www.meetup.com/AngularMN/events/259098278/)
+- 2019-03-06 [AngularMN March 2019 Meetup](https://www.meetup.com/AngularMN/events/259098278/) | [Recording](https://www.youtube.com/watch?v=YJFtDdvhhZc)
 - 2019-02-22 FED@IBM Rochester
 
 ## Overview
